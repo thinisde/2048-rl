@@ -2,6 +2,14 @@
 
 This project trains a Deep Q-Network (DQN) agent to play 2048 using a strategy-guided reinforcement learning pipeline.
 
+## Demo Video
+
+<video src="assets/demo.mov" controls width="900">
+  Your browser does not support the video tag.
+</video>
+
+Direct link: [assets/demo.mov](assets/demo.mov)
+
 ## Project Structure
 
 - `rl2048/`: core RL code (environment, model, replay buffer, shaping, teacher policy)
