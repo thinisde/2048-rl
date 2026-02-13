@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048 RL Visualizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <div class="halo halo-a"></div>
+  <div class="halo halo-b"></div>
+
+  <main class="page">
+    <section class="panel board-panel">
+      <div class="panel-header">
+        <h1>2048 Policy Viewer</h1>
+        <p>Live rollout from <code>play.py</code> greedy legal-action logic.</p>
+      </div>
+      <div id="board" class="board" aria-label="2048 board"></div>
+      <div class="status-strip">
+        <span id="score">Score: 0</span>
+        <span id="max-tile">Max Tile: 0</span>
+        <span id="done">Running</span>
+      </div>
+    </section>
+
+    <section class="panel controls-panel">
+      <div class="action-row">
+        <button id="reset-btn" class="btn strong">Reset</button>
+        <button id="model-step-btn" class="btn strong">Model Step</button>
+        <button id="autoplay-btn" class="btn accent">Start Autoplay</button>
+      </div>
+
+      <div class="speed-row">
+        <label for="speed">Autoplay Delay</label>
+        <input id="speed" type="range" min="60" max="600" value="200" step="20" />
+        <span id="speed-label">200 ms</span>
+      </div>
+
+      <div class="manual-grid">
+        <button data-action="0" class="btn manual">Up</button>
+        <button data-action="1" class="btn manual">Down</button>
+        <button data-action="2" class="btn manual">Left</button>
+        <button data-action="3" class="btn manual">Right</button>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <span class="metric-label">Last Action</span>
+          <span id="last-action" class="metric-value">None</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Last Reward</span>
+          <span id="last-reward" class="metric-value">0.000</span>
+        </div>
+      </div>
+
+      <div class="q-values">
+        <h2>Q Values</h2>
+        <ul id="q-values-list"></ul>
+      </div>
+
+      <p id="error" class="error"></p>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
